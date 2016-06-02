@@ -2,33 +2,33 @@
 
 Run Dropbox inside Docker. Fully working with local host folder mount or inter-container linking (via `--volumes-from`).
 
-This repository provides the [janeczku/dropbox](https://registry.hub.docker.com/u/janeczku/dropbox/) image.
+This repository provides the [vga101/dropbox](https://registry.hub.docker.com/u/vga101/dropbox/) image.
 
 ## Usage examples
 
 ### Quickstart
 
-    docker run -d --restart=always --name=dropbox janeczku/dropbox
+    docker run -d --restart=always --name=dropbox vga101/dropbox
 
 ### Dropbox data mounted to local folder on the host
 
     docker run -d --restart=always --name=dropbox \
     -v /path/to/localfolder:/dbox/Dropbox \
-    janeczku/dropbox
+    vga101/dropbox
 
 ### Run dropbox with custom user/group id
 This fixes file permission errrors that might occur when mounting the Dropbox file folder (`/dbox/Dropbox`) from the host or a Docker container volume. You need to set `DBOX_UID`/`DBOX_GID` to the user id and group id of whoever owns these files on the host or in the other container.
 
     docker run -d --restart=always --name=dropbox \
-    -e DBOX_UID=110 \
-    -e DBOX_GID=200 \
-    janeczku/dropbox
+    -e DBOX_UID=1000 \
+    -e DBOX_GID=1000 \
+    vga101/dropbox
 
 ### Enable LAN Sync
 
     docker run -d --restart=always --name=dropbox \
     --net="host" \
-    janeczku/dropbox
+    vga101/dropbox
 
 ## Linking to Dropbox account after first start
 
